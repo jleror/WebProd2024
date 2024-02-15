@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page with Keyframe Animation</title>
+    <style>
+        /* Set appropriate sizing and positioning for the images within carousel slides */
+        .splide__slide img {
+            width: 70%;
+            height: 70%;
+            object-fit: cover;
+        }
+
+        /* Apply background image to the body with appropriate settings */
+        body {
+            background-image: url("././assets/images/Background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0; /* Reset default margin */
+            padding: 0; /* Reset default padding */
+        }
+
+        /* Reset default list styling for better presentation */
+        ul {
+            list-style-type: none;
+        }
+
+        /* Adjust container width for better layout */
+        .container {
+            width: 80%; /* Adjust as per your design preference */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        /* Apply opacity to inactive carousel slides for a subtle effect */
+        .splide__slide {
+            opacity: 3;
+            transition: opacity 1.3s ease; /* Add smooth transition effect */
+        }
+
+        /* Increase opacity for active slide for emphasis */
+        .splide__slide.is-active {
+            opacity: 1;
+        }
+
+        /* Keyframe animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Apply animation only once */
+        .animate-once {
+            animation: fadeIn 1.5s ease forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Your HTML content here -->
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check if animation has been played before
+            if (!localStorage.getItem("animationPlayed")) {
+                // Add class to trigger animation
+                document.body.classList.add("animate-once");
+
+                // Set local storage to indicate animation has been played
+                localStorage.setItem("animationPlayed", "true");
+            }
+        });
+    </script>
+</body>
+</html>
